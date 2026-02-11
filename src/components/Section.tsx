@@ -6,6 +6,7 @@ interface SectionProps {
   eyebrow?: string;
   kicker?: string;
   className?: string;
+  titleTag?: 'h1' | 'h2';
 }
 
 export default function Section({
@@ -14,7 +15,10 @@ export default function Section({
   eyebrow,
   kicker,
   className = '',
+  titleTag = 'h2',
 }: SectionProps) {
+  const TitleTag = titleTag;
+
   return (
     <section className={`section ${className}`}>
       <div className="container">
@@ -22,9 +26,9 @@ export default function Section({
           <div className="mb-12 text-center max-w-3xl mx-auto">
             {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              <TitleTag className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 {title}
-              </h2>
+              </TitleTag>
             )}
             {kicker && <p className="kicker">{kicker}</p>}
           </div>

@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { SEO } from '../components/SEO';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 const packages = [
   {
@@ -51,12 +53,22 @@ const packages = [
 export default function Pricing() {
   const navigate = useNavigate();
   return (
-    <section className="bg-sand min-h-screen flex items-center justify-center pt-40 pb-32 px-4">
+    <div>
+      <SEO
+        title="Pricing & Packages"
+        description="Transparent pricing for web design services. Website refreshes from $800, new builds from $1,500, and custom solutions. Find the perfect package for your business."
+        canonical="https://harborlinedigital.com/pricing"
+        keywords="web design pricing, website cost, affordable web design, Maine web designer pricing, website packages"
+      />
+      <div className="container">
+        <Breadcrumb items={[{ name: 'Pricing', path: '/pricing' }]} />
+      </div>
+      <section className="bg-sand min-h-screen flex items-center justify-center pt-40 pb-32 px-4">
       <div className="max-w-5xl mx-auto w-full space-y-12">
         <header className="text-center max-w-3xl mx-auto">
-          <p className="text-3xl md:text-4xl font-extrabold text-navy mb-4">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-navy mb-4">
             Pricing & Packages
-          </p>
+          </h1>
           <p className="text-base md:text-lg text-navy/80 leading-relaxed font-semibold">
             Every project is different, but these packages make it easy to get started.
             Whether you need a full website build or a quick refresh, we’ll help you
@@ -100,10 +112,11 @@ export default function Pricing() {
         </div>
 
         <p className="text-center text-sm md:text-base text-navy/80 font-semibold mt-12">
-          Not sure where your project fits? Let’s chat. I can help you find a plan that
+          Not sure where your project fits? Let's chat. I can help you find a plan that
           fits your needs and budget.
         </p>
       </div>
-    </section>
+      </section>
+    </div>
   );
 }

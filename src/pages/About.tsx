@@ -1,13 +1,24 @@
 import Section from '../components/Section';
 import Card from '../components/Card';
+import { SEO } from '../components/SEO';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 export default function About() {
   return (
     <div>
+      <SEO
+        title="About Us"
+        description="Learn about Harborline Digital, a small web design studio in Kennebunk, Maine dedicated to bringing modern web design to coastal small businesses."
+        canonical="https://harborlinedigital.com/about"
+        keywords="about Harborline Digital, web designer Kennebunk Maine, local web design studio, coastal web designer"
+      />
+      <div className="container">
+        <Breadcrumb items={[{ name: 'About', path: '/about' }]} />
+      </div>
       <Section
-        eyebrow="⚓ About Harborline Digital"
-        title="A small studio built for big ideas."
-        kicker="Clean, modern web design for the small businesses that keep towns like Kennebunk feeling alive."
+        eyebrow="About Harborline Digital"
+        title="Modern web design for established small businesses."
+        kicker="We design and build fast, strategic websites that help local brands present themselves with clarity and confidence."
         className="bg-sand min-h-screen flex items-center justify-center pt-36 pb-28"
       >
         <div className="grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto w-full">
@@ -26,10 +37,10 @@ export default function About() {
           {/* Bio */}
           <div className="space-y-6 text-navy/70 leading-relaxed">
             <p>
-              I started Harborline Digital to bring clean, modern web design to the small businesses I grew up around, the ones that make towns like Kennebunk feel alive.
+              Harborline Digital is a web design studio based in Kennebunk, Maine. We specialize in building clean, modern websites for small businesses that want a professional online presence without unnecessary complexity.
             </p>
             <p>
-              I recently finished a six-month full stack web development bootcamp, but my roots with technology go way back. I have always been drawn to creating things on a computer, whether that is graphic design, video editing, 3D animation, or building small games. Web design turned out to be the perfect mix of creativity and logic for me.
+              With a background in full-stack development and digital design, our work blends strong visual presentation with reliable performance. Every site is built to be fast, accessible, and easy to manage.
             </p>
           </div>
         </div>
@@ -43,13 +54,42 @@ export default function About() {
             className="p-6 space-y-4 select-none cursor-default transition-colors duration-200 hover:bg-sand/30"
           >
             <h3 className="font-display text-xl font-semibold text-navy">
-              My approach
+              Our Approach
             </h3>
             <p className="text-navy/70 leading-relaxed">
-              I focus on creating simple, highly functional websites that feel modern, fast, and easy to use. Every project is collaborative: I check in often, share progress, and make sure every decision fits your business goals before moving forward.
+              We focus on clarity, performance, and usability. Each website is designed around your business goals — whether that is generating leads, supporting customers, or strengthening brand credibility.
             </p>
             <p className="text-navy/70 leading-relaxed">
-              I do not believe in one-size-fits-all templates. Each site is built intentionally, with attention to detail and a focus on long-term usability.
+              Projects are structured, collaborative, and transparent from start to launch. No unnecessary features, no bloated templates — just purposeful design and clean development.
+            </p>
+
+          </Card>
+
+          <Card
+            hover
+            className="p-6 space-y-4 select-none cursor-default transition-colors duration-200 hover:bg-sand/30"
+          >
+            <h3 className="font-display text-xl font-semibold text-navy">
+              Who We Work With
+            </h3>
+            <p className="text-navy/70 leading-relaxed">
+              We partner with established small businesses — boutiques, restaurants, service providers, and professional firms — that need a website reflecting the quality of their work.
+            </p>
+            <p className="text-navy/70 leading-relaxed">
+              Our clients value clear communication, thoughtful design, and long-term reliability. We build sites that support growth, not just aesthetics.
+            </p>
+
+          </Card>
+
+          <Card
+            hover
+            className="p-6 space-y-4 select-none cursor-default transition-colors duration-200 hover:bg-sand/30"
+          >
+            <h3 className="font-display text-xl font-semibold text-navy">
+              Studio Model
+            </h3>
+            <p className="text-navy/70 leading-relaxed">
+              Harborline Digital operates as a focused, independent studio. When projects require additional expertise — such as advanced branding, photography, or specialized development — we collaborate with trusted partners to ensure high standards across every detail.
             </p>
           </Card>
 
@@ -58,40 +98,13 @@ export default function About() {
             className="p-6 space-y-4 select-none cursor-default transition-colors duration-200 hover:bg-sand/30"
           >
             <h3 className="font-display text-xl font-semibold text-navy">
-              Why small businesses
+              What You Can Expect
             </h3>
             <p className="text-navy/70 leading-relaxed">
-              The tech world is crowded, and working with local brands feels more meaningful than blending into a massive company. Growing up in Kennebunk, I have seen firsthand how many small businesses do not have the time or budget to prioritize their online presence, and that is exactly where I can help.
+              Clear timelines. Direct communication. Thoughtful execution. We aim to make the website process straightforward and efficient, so you can stay focused on running your business.
             </p>
             <p className="text-navy/70 leading-relaxed">
-              Whether you are a boutique, restaurant, or local service provider, my goal is to make your business feel polished and professional online, without the overwhelm.
-            </p>
-          </Card>
-
-          <Card
-            hover
-            className="p-6 space-y-4 select-none cursor-default transition-colors duration-200 hover:bg-sand/30"
-          >
-            <h3 className="font-display text-xl font-semibold text-navy">
-              Looking ahead
-            </h3>
-            <p className="text-navy/70 leading-relaxed">
-              Harborline Digital is currently a one-person studio, but I plan to grow over time by collaborating with other designers and developers who share the same values of craftsmanship, clarity, and community.
-            </p>
-          </Card>
-
-          <Card
-            hover
-            className="p-6 space-y-4 select-none cursor-default transition-colors duration-200 hover:bg-sand/30"
-          >
-            <h3 className="font-display text-xl font-semibold text-navy">
-              Personal note
-            </h3>
-            <p className="text-navy/70 leading-relaxed">
-              I am a Kennebunk kid through and through: grew up biking to the beach, working summers around town, and even valet parking at the White Barn Inn. These days, I am temporarily based in California, but I am still proud to work with clients back home and beyond.
-            </p>
-            <p className="text-navy/70 leading-relaxed">
-              Wherever you are based, if you care about your craft, I would love to help you bring that same care to your website.
+              Every project is built with long-term usability in mind — structured cleanly, optimized for performance, and designed to age well.
             </p>
           </Card>
         </div>

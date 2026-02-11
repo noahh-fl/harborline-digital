@@ -3,6 +3,27 @@ import Section from '../components/Section';
 import Card from '../components/Card';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { X } from 'lucide-react';
+import { SEO } from '../components/SEO';
+import { Breadcrumb } from '../components/Breadcrumb';
+
+const WorkImage = ({ src, alt, className }: { src: string; alt: string; className: string }) => {
+  const basePath = src.replace('.png', '');
+  return (
+    <picture>
+      <source
+        srcSet={`${basePath}-400w.webp 400w, ${basePath}-800w.webp 800w, ${basePath}-1200w.webp 1200w`}
+        sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px"
+        type="image/webp"
+      />
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className={className}
+      />
+    </picture>
+  );
+};
 
 type ProjectVisual = {
   src: string;
@@ -40,12 +61,12 @@ export default function Work() {
           caption: 'Pricing grid that spotlights membership tiers and guest passes.',
         },
         {
-          src: '/images/work/sea.breeze/sb.home-pge.mov',
+          src: '/images/work/sea.breeze/sb.home-pge',
           caption: 'Looping hero walkthrough showing schedule highlights.',
           type: 'video',
         },
         {
-          src: '/images/work/sea.breeze/sb.inst-pge.mov',
+          src: '/images/work/sea.breeze/sb.inst-pge',
           caption: 'Class detail section preview with animated transitions.',
           type: 'video',
         },
@@ -69,7 +90,7 @@ export default function Work() {
           caption: 'Homepage with collection highlights and event inquiry prompts.',
         },
         {
-          src: '/images/work/wild.tide/wt.home-pge.mov',
+          src: '/images/work/wild.tide/wt.home-pge',
           caption: 'Hero flow showcasing bouquet collections in motion.',
           type: 'video',
         },
@@ -93,7 +114,7 @@ export default function Work() {
           caption: 'Homepage hero highlighting featured roasts and membership perks.',
         },
         {
-          src: '/images/work/bean.anchor/ab.home-pge.mov',
+          src: '/images/work/bean.anchor/ab.home-pge',
           caption: 'Scrolling hero demonstrating autoplayed featured roast reel.',
           type: 'video',
         },
@@ -143,6 +164,15 @@ export default function Work() {
 
   return (
     <div>
+      <SEO
+        title="Portfolio & Case Studies"
+        description="Explore our portfolio of custom websites for coastal businesses. View case studies for yoga studios, florists, coffee shops and more."
+        canonical="https://harborlinedigital.com/work"
+        keywords="web design portfolio, case studies, website examples, Maine websites, coastal web design"
+      />
+      <div className="container">
+        <Breadcrumb items={[{ name: 'Work', path: '/work' }]} />
+      </div>
       <Section
         eyebrow="Portfolio"
         title="Our Work"
@@ -157,7 +187,7 @@ export default function Work() {
               className="overflow-hidden flex flex-col w-full max-w-sm mx-auto"
             >
               <div className="aspect-video border-b border-navy/10 bg-slate-100">
-                <img
+                <WorkImage
                   src={project.thumbnail}
                   alt={`${project.title} homepage preview`}
                   className="w-full h-full object-cover"
@@ -213,15 +243,17 @@ export default function Work() {
                         <div className="overflow-hidden rounded-2xl border border-navy/10 bg-white">
                           {visual.type === 'video' ? (
                             <video
-                              src={visual.src}
                               autoPlay
                               loop
                               muted
                               playsInline
                               className="w-full object-cover"
-                            />
+                            >
+                              <source src={`${visual.src}.webm`} type="video/webm" />
+                              <source src={`${visual.src}.mp4`} type="video/mp4" />
+                            </video>
                           ) : (
-                            <img
+                            <WorkImage
                               src={visual.src}
                               alt={visual.caption}
                               className="w-full object-cover"
@@ -324,14 +356,16 @@ export default function Work() {
               <div className="overflow-hidden rounded-2xl bg-white shadow-inner border border-navy/10">
                 {activeVisualDetail.visual.type === 'video' ? (
                   <video
-                    src={activeVisualDetail.visual.src}
                     controls
                     autoPlay
                     playsInline
                     className="w-full h-full object-cover"
-                  />
+                  >
+                    <source src={`${activeVisualDetail.visual.src}.webm`} type="video/webm" />
+                    <source src={`${activeVisualDetail.visual.src}.mp4`} type="video/mp4" />
+                  </video>
                 ) : (
-                  <img
+                  <WorkImage
                     src={activeVisualDetail.visual.src}
                     alt={activeVisualDetail.visual.caption}
                     className="w-full h-full object-cover"

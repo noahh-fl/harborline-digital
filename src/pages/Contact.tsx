@@ -2,6 +2,8 @@ import { useState, type FormEvent } from 'react';
 import Section from '../components/Section';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import { SEO } from '../components/SEO';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 const inputClasses =
   'w-full px-4 py-3 rounded-lg border border-navy/15 bg-white text-navy placeholder-navy/40 focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-transparent transition-all';
@@ -32,10 +34,20 @@ export default function Contact() {
 
   return (
     <div className="space-y-0">
+      <SEO
+        title="Get Started | Contact Harborline Digital"
+        description="Ready to start your web design project? Contact Harborline Digital for a free consultation. Get a reply within 24 hours for website builds, refreshes, and custom solutions."
+        canonical="https://harborlinedigital.com/contact"
+        keywords="contact web designer, Maine web design contact, get started website project, web design consultation, Kennebunk web designer"
+      />
+      <div className="container">
+        <Breadcrumb items={[{ name: 'Contact', path: '/contact' }]} />
+      </div>
       <Section
         eyebrow="🪶 Contact"
-        title="Let’s get your site sailing smoothly."
-        kicker="Tell me a bit about your project below — whether you need a full website build, a refresh of something outdated, or just want to talk options. I’ll get back to you personally within a day."
+        title="Let's get your site sailing smoothly."
+        kicker="Tell me a bit about your project below — whether you need a full website build, a refresh of something outdated, or just want to talk options. I'll get back to you personally within a day."
+        titleTag="h1"
       >
         <div className="max-w-4xl mx-auto">
           {!submitted ? (

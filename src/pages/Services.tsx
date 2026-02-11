@@ -1,6 +1,27 @@
 import { Timeline } from "@/components/ui/timeline";
 import { Check } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SEO } from '../components/SEO';
+import { Breadcrumb } from '../components/Breadcrumb';
+
+const ServiceImage = ({ src, alt, className }: { src: string; alt: string; className: string }) => {
+  const basePath = src.replace('.png', '');
+  return (
+    <picture>
+      <source
+        srcSet={`${basePath}-400w.webp 400w, ${basePath}-800w.webp 800w, ${basePath}-1200w.webp 1200w`}
+        sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px"
+        type="image/webp"
+      />
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className={className}
+      />
+    </picture>
+  );
+};
 
 export default function Services() {
   const bodyTextClass =
@@ -36,22 +57,22 @@ export default function Services() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <img
+            <ServiceImage
               src="/images/services/service-cards/1.1.png"
               alt="Website refresh concept"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/1.2.png"
               alt="Navigation improvements preview"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/1.3.png"
               alt="Feature updates mockup"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/1.4.png"
               alt="Updated visual design example"
               className={cardImageClass}
@@ -85,22 +106,22 @@ export default function Services() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <img
+            <ServiceImage
               src="/images/services/service-cards/2.1.png"
               alt="New website concept"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/2.2.png"
               alt="Responsive layout preview"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/2.3.png"
               alt="Clean website layout example"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/2.4.png"
               alt="Small business website example"
               className={cardImageClass}
@@ -134,22 +155,22 @@ export default function Services() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <img
+            <ServiceImage
               src="/images/services/service-cards/3.1.png"
               alt="Custom add-on interface"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/3.2.png"
               alt="Booking tool example"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/3.3.png"
               alt="Database connection visualization"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/3.4.png"
               alt="Secure login mockup"
               className={cardImageClass}
@@ -185,22 +206,22 @@ export default function Services() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <img
+            <ServiceImage
               src="/images/services/service-cards/4.1.png"
               alt="Website maintenance example"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/4.2.png"
               alt="SEO optimization example"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/4.3.png"
               alt="Analytics dashboard example"
               className={cardImageClass}
             />
-            <img
+            <ServiceImage
               src="/images/services/service-cards/4.4.png"
               alt="Website support example"
               className={cardImageClass}
@@ -211,8 +232,92 @@ export default function Services() {
     },
   ];
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How much does a website cost?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Website projects start at $800 for refreshes and $1,500 for new builds. Custom projects with advanced features (booking systems, databases, user logins) are priced individually based on scope.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How long does it take to build a website?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Most website refreshes take 1-2 weeks, while new builds typically take 2-4 weeks depending on complexity. Custom projects with integrations may take longer.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do you provide ongoing support after launch?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes! I offer ongoing support packages for regular site updates, content changes, SEO monitoring, and performance tracking.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Will my website be mobile-friendly?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Absolutely. Every site I build is fully responsive and optimized for mobile, tablet, and desktop devices.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can you help with SEO?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes! All websites include basic SEO setup (meta tags, structured data, sitemap, fast loading speeds). For ongoing SEO work, I offer dedicated SEO support packages.',
+        },
+      },
+    ],
+  };
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        serviceType: 'Web Design and Development',
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'Harborline Digital',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Kennebunk',
+            addressRegion: 'ME',
+            addressCountry: 'US',
+          },
+        },
+        areaServed: 'Maine Coast',
+        description: 'Professional web design services including website refreshes, new builds, custom add-ons, and ongoing support & SEO',
+        offers: {
+          '@type': 'Offer',
+          priceRange: '$800+',
+        },
+      },
+      faqSchema,
+    ],
+  };
+
   return (
     <div className="w-full">
+      <SEO
+        title="Web Design Services"
+        description="Professional web design services for coastal businesses. Website refreshes starting at $800, new builds from $1,500, custom add-ons, and ongoing support & SEO."
+        canonical="https://harborlinedigital.com/services"
+        keywords="web design services, website refresh, new website build, custom web development, ongoing website support, SEO services, Maine web design"
+        structuredData={serviceSchema}
+      />
+      <div className="container">
+        <Breadcrumb items={[{ name: 'Services', path: '/services' }]} />
+      </div>
       {/* Full-height Hero Section */}
       <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-seafoam/40 via-sand to-white">
         <div className="container max-w-4xl mx-auto px-6 py-20 text-center">
@@ -237,12 +342,66 @@ export default function Services() {
       {/* Timeline Component */}
       <Timeline data={data} />
 
+      {/* FAQ Section */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="eyebrow mb-4">Common Questions</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <div className="space-y-6">
+            <div className="border-l-4 border-seafoam pl-6 py-4">
+              <h3 className="font-display text-xl font-semibold text-navy mb-3">
+                How much does a website cost?
+              </h3>
+              <p className="text-navy/80 leading-relaxed">
+                Website projects start at $800 for refreshes and $1,500 for new builds. Custom projects with advanced features (booking systems, databases, user logins) are priced individually based on scope. We'll discuss your needs upfront and provide a clear estimate before starting work.
+              </p>
+            </div>
+            <div className="border-l-4 border-seafoam pl-6 py-4">
+              <h3 className="font-display text-xl font-semibold text-navy mb-3">
+                How long does it take to build a website?
+              </h3>
+              <p className="text-navy/80 leading-relaxed">
+                Most website refreshes take 1-2 weeks, while new builds typically take 2-4 weeks depending on complexity. Custom projects with integrations may take longer. Timeline depends on feedback cycles and content availability, so I'll work with you to establish realistic milestones.
+              </p>
+            </div>
+            <div className="border-l-4 border-seafoam pl-6 py-4">
+              <h3 className="font-display text-xl font-semibold text-navy mb-3">
+                Do you provide ongoing support after launch?
+              </h3>
+              <p className="text-navy/80 leading-relaxed">
+                Yes! I offer ongoing support packages for regular site updates, content changes, SEO monitoring, and performance tracking. You're never locked into a maintenance plan, but many clients find it helpful to have support available as their business grows.
+              </p>
+            </div>
+            <div className="border-l-4 border-seafoam pl-6 py-4">
+              <h3 className="font-display text-xl font-semibold text-navy mb-3">
+                Will my website be mobile-friendly?
+              </h3>
+              <p className="text-navy/80 leading-relaxed">
+                Absolutely. Every site I build is fully responsive and optimized for mobile, tablet, and desktop devices. With most web traffic coming from mobile devices, ensuring a great mobile experience is a top priority for every project.
+              </p>
+            </div>
+            <div className="border-l-4 border-seafoam pl-6 py-4">
+              <h3 className="font-display text-xl font-semibold text-navy mb-3">
+                Can you help with SEO?
+              </h3>
+              <p className="text-navy/80 leading-relaxed">
+                Yes! All websites include basic SEO setup (meta tags, structured data, sitemap, fast loading speeds). For ongoing SEO work like keyword tracking, content optimization, and local search improvements, I offer dedicated SEO support packages.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-sand/40 min-h-[50vh] py-20 px-6 flex items-center">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-navy">
             Every project is{" "}
             <span className="underline decoration-seafoam decoration-4 underline-offset-8">
-              Uniqie
+              Unique
             </span>
           </h2>
           <p className="text-navy/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
